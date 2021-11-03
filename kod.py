@@ -349,7 +349,7 @@ class Doing(QtWidgets.QMainWindow, Ui_MainWindow):
         self.image.setPixmap(self.pixmap)
 
     def main_image(self):  # функция для отображения главной картинки ( в данном случае цветов)
-        self.pixmap = QPixmap('orig.jpg')
+        self.pixmap = QPixmap('orig1.jpg')
         self.image = QLabel(self)
         self.image.move(360, 315)
         self.image.resize(340, 340)
@@ -377,12 +377,12 @@ class Doing(QtWidgets.QMainWindow, Ui_MainWindow):
                 writer.writerow(self.listWidget.item(0).text().split(' - '))
 
             for i in range(self.listWidget.count() - 1):
-                with open('data.csv', 'a', newline='') as csvfile:
+                with open('data.csv', 'w', newline='') as csvfile:
                     writer = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                     writer.writerow(self.listWidget.item(i + 1).text().split(' - '))
         # настройка содержимого data_1
 
-        with open('data_1.csv', 'a', newline='') as csvfile:
+        with open('data_1.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(self.item_el)
 
@@ -400,7 +400,7 @@ class Doing(QtWidgets.QMainWindow, Ui_MainWindow):
             self.listWidget.addItem(text[0] + ' - ' + text[1])
             self.input_text.clear()
             self.listWidget.sortItems(QtCore.Qt.DescendingOrder)
-        with open('data.csv', 'a', newline='') as csvfile:
+        with open('data.csv', 'k', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(text)
 
