@@ -400,7 +400,7 @@ class Doing(QtWidgets.QMainWindow, Ui_MainWindow):
             self.listWidget.addItem(text[0] + ' - ' + text[1])
             self.input_text.clear()
             self.listWidget.sortItems(QtCore.Qt.DescendingOrder)
-        with open('data.csv', 'k', newline='') as csvfile:
+        with open('data.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(text)
 
