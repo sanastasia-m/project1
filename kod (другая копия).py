@@ -19,6 +19,7 @@ class Ui_MainWindow(object):
         self.listWidget.setGeometry(QtCore.QRect(710, 20, 461, 451))
         self.listWidget.setStyleSheet("background-color: rgb(224, 235, 242);\n"
                                       "font: 12pt \"TeX Gyre Schola\";")
+
         self.listWidget.setObjectName("timetable")
         self.del_btn = QtWidgets.QToolButton(self.centralwidget)  # кнопка, которая удаляет все
         self.del_btn.setGeometry(QtCore.QRect(470, 270, 111, 34))
@@ -34,6 +35,9 @@ class Ui_MainWindow(object):
         self.main_text.setGeometry(QtCore.QRect(361, 20, 341, 131))
         self.main_text.setStyleSheet("background-color: rgb(242, 188, 193);\n"
                                      "font: 12pt \"TeX Gyre Schola\";")
+        self.main_text.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
+                                     "color: rgb(241, 240, 232);\n"
+                                     "background-color: rgb(81, 63, 66);")
         self.main_text.setObjectName("main_text")
         self.selected_event = QtWidgets.QTextBrowser(self.centralwidget)  # виджет, показывающий выбранное событие
         self.selected_event.setGeometry(QtCore.QRect(710, 540, 461, 111))
@@ -75,20 +79,20 @@ class Ui_MainWindow(object):
                                       "font: 12pt \"TeX Gyre Schola\";")
         self.under_done.setObjectName("under_done")
         self.classic_look = QtWidgets.QToolButton(self.centralwidget)
-        self.classic_look.setGeometry(QtCore.QRect(10, 600, 161, 24))
+        # self.classic_look.setGeometry(QtCore.QRect(10, 600, 161, 24))
         self.classic_look.setStyleSheet("background-color: rgb(206, 224, 221);\n""")
         self.classic_look.setObjectName("classic_look")
-        self.coffee_look = QtWidgets.QToolButton(self.centralwidget)
-        self.coffee_look.setGeometry(QtCore.QRect(10, 630, 161, 24))
-        self.coffee_look.setStyleSheet("background-color: rgb(206, 224, 221);\n""")
-        self.coffee_look.setObjectName("light_look")
-        self.autumn_look = QtWidgets.QToolButton(self.centralwidget)
-        self.autumn_look.setGeometry(QtCore.QRect(190, 600, 161, 24))
-        self.autumn_look.setStyleSheet("background-color: rgb(206, 224, 221);")
-        self.autumn_look.setObjectName("dark_look")
+        self.light_look = QtWidgets.QToolButton(self.centralwidget)
+        self.light_look.setGeometry(QtCore.QRect(10, 600, 161, 54))
+        self.light_look.setStyleSheet("background-color: rgb(206, 224, 221);\n""")
+        self.light_look.setObjectName("light_look")
+        self.dark_look = QtWidgets.QToolButton(self.centralwidget)
+        self.dark_look.setGeometry(QtCore.QRect(190, 600, 161, 54))
+        self.dark_look.setStyleSheet("background-color: rgb(206, 224, 221);")
+        self.dark_look.setObjectName("dark_look")
 
         self.eatable_look = QtWidgets.QToolButton(self.centralwidget)
-        self.eatable_look.setGeometry(QtCore.QRect(190, 630, 161, 24))
+        # self.eatable_look.setGeometry(QtCore.QRect(190, 630, 161, 24))
         self.eatable_look.setStyleSheet("background-color: rgb(206, 224, 221);")
         self.eatable_look.setObjectName("eatable_look")
 
@@ -151,10 +155,10 @@ class Ui_MainWindow(object):
                                                          "margin-bottom:0px; margin-left:0px; margin-right:0px;"
                                                          " -qt-block-indent:0; text-indent:0px;\"><br />"
                                                          "</p></body></html>"))
-        self.classic_look.setText(_translate("MainWindow", "Классическая тема"))
-        self.coffee_look.setText(_translate("MainWindow", " Кофейная тема"))
-        self.autumn_look.setText(_translate("MainWindow", " Осеннняя тема"))
-        self.eatable_look.setText(_translate("MainWindow", " \"Съедобная\" тема"))
+        # self.classic_look.setText(_translate("MainWindow", "Классическая тема"))
+        self.light_look.setText(_translate("MainWindow", "светлая тема"))
+        self.dark_look.setText(_translate("MainWindow", "темная тема"))
+        # self.eatable_look.setText(_translate("MainWindow", " \"Съедобная\" тема"))
         self.del_btn_3.setText(_translate("MainWindow", "Удалить все из раздела \"Сделано\""))
 
 
@@ -200,8 +204,8 @@ class Doing(QtWidgets.QMainWindow, Ui_MainWindow):
         self.main_image()
         self.ikon()
         self.classic_look.clicked.connect(self.f_classic_look)
-        self.coffee_look.clicked.connect(self.f_coffee_look)
-        self.autumn_look.clicked.connect(self.f_autumn_look)
+        self.light_look.clicked.connect(self.f_coffee_look)
+        self.dark_look.clicked.connect(self.f_autumn_look)
         self.eatable_look.clicked.connect(self.f_eatable_look)
         self.selected_event.setText(f'Выбранно событие: Нет событий')
         self.del_btn_3.clicked.connect(self.f_del_btn_3)
@@ -234,29 +238,31 @@ class Doing(QtWidgets.QMainWindow, Ui_MainWindow):
                                       "\n"
                                       "font: 12pt \"TeX Gyre Schola\";")
         self.del_btn.setStyleSheet("background-color: rgb(246, 223, 225);")
-        self.coffee_look.setStyleSheet("background-color: rgb(206, 224, 221);\n""")
+        self.light_look.setStyleSheet("background-color: rgb(206, 224, 221);\n""")
         self.classic_look.setStyleSheet("background-color: rgb(206, 224, 221);\n""")
-        self.autumn_look.setStyleSheet("background-color: rgb(206, 224, 221);\n""")
+        self.dark_look.setStyleSheet("background-color: rgb(206, 224, 221);\n""")
         self.eatable_look.setStyleSheet("background-color: rgb(206, 224, 221);\n""")
 
     def f_coffee_look(self):  # функция, меняющая стиль
         self.listWidget.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
-                                      "color: rgb(241, 240, 232);\n"
-                                      "background-color: rgb(81, 63, 66);")
+                                      "color: rgb(81, 63, 66);\n"
+                                      "background-color: rgb(253, 245, 230);")
         self.del_btn.setStyleSheet("background-color: rgb(205, 183, 169);\n"
                                    "")
         self.add_btn.setStyleSheet("background-color: rgb(205, 183, 169);\n"
                                    "border-color: rgb(198, 186, 190);")
         self.main_text.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
-                                     "background-color: rgb(241, 240, 232);")
+                                          "color: rgb(81, 63, 66);\n"
+                                          "background-color: rgb(238, 222, 206);")
         self.selected_event.setStyleSheet("background-color: rgb(226, 214, 206);\n"
                                           "font: 12pt \"TeX Gyre Schola\";")
         self.input_text.setStyleSheet("background-color: rgb(226, 214, 206);\n"
                                       "font: 12pt \"TeX Gyre Schola\";")
-        self.soon_event.setStyleSheet("background-color: rgb(81, 63, 66);\n"
-                                      "color: rgb(241, 240, 232);\n"
+        self.soon_event.setStyleSheet("background-color: rgb(253, 245, 230);\n"
+                                      "color: rgb(81, 63, 66);\n"
                                       "font: 12pt \"TeX Gyre Schola\";")
-        self.calendarWidget.setStyleSheet("color: rgb(81, 63, 66);\n"
+        self.calendarWidget.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
+                                          "color: rgb(81, 63, 66);\n"
                                           "background-color: rgb(238, 222, 206);")
         self.done_text.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
                                      "background-color: rgb(81, 63, 66);\n"
@@ -268,46 +274,47 @@ class Doing(QtWidgets.QMainWindow, Ui_MainWindow):
                                      "")
         self.del_btn_3.setStyleSheet("background-color: rgb(205, 183, 169);\n"
                                      "")
-        self.coffee_look.setStyleSheet("background-color: rgb(170, 124, 114);")
+        self.light_look.setStyleSheet("background-color: rgb(170, 124, 114);")
         self.classic_look.setStyleSheet("background-color: rgb(170, 124, 114);")
-        self.autumn_look.setStyleSheet("background-color: rgb(170, 124, 114);")
+        self.dark_look.setStyleSheet("background-color: rgb(170, 124, 114);")
         self.eatable_look.setStyleSheet("background-color: rgb(170, 124, 114);")
 
     def f_autumn_look(self):  # функция, меняющая стиль
-        self.del_btn.setStyleSheet("background-color: rgb(218, 234, 217);")
-        self.add_btn.setStyleSheet("background-color: rgb(218, 234, 217);")
-
-        self.main_text.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
-                                     "background-color: rgb(240, 215, 164);")
-        self.selected_event.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
-                                          "background-color: rgb(225, 177, 133);")
-        self.input_text.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
-                                      "background-color: rgb(225, 177, 133);")
-        self.soon_event.setStyleSheet("color: rgb(241, 240, 232);\n"
-                                      "background-color: rgb(163, 104, 77);\n"
-                                      "font: 12pt \"TeX Gyre Schola\";")
-        self.calendarWidget.setStyleSheet("color: rgb(81, 63, 66);\n"
-                                          "background-color: rgb(238, 222, 206);")
-        self.del_btn_2.setStyleSheet("background-color: rgb(218, 234, 217);")
-        self.del_btn_3.setStyleSheet("background-color: rgb(218, 234, 217);")
-
-        self.done_text.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
-                                     "color: rgb(226, 214, 206);\n"
-                                     "background-color: rgb(163, 104, 77);")
-        self.under_done.setStyleSheet("background-color: rgb(228, 243, 231);\n"
-                                      "\n"
-                                      "font: 12pt \"TeX Gyre Schola\";")
-        self.classic_look.setStyleSheet("background-color: rgb(206, 224, 221);")
-        self.coffee_look.setStyleSheet("background-color: rgb(206, 224, 221);")
-        self.autumn_look.setStyleSheet("background-color: rgb(206, 224, 221);")
-        self.eatable_look.setStyleSheet("background-color: rgb(206, 224, 221);")
-
         self.listWidget.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
                                       "color: rgb(241, 240, 232);\n"
-                                      "background-color: rgb(163, 104, 77);")
-        self.calendarWidget.setStyleSheet("color: rgb(81, 63, 66);\n"
-                                          "background-color: rgb(206, 224, 221);\n"
-                                          "alternate-background-color: rgb(238, 222, 206);")
+                                      "background-color: rgb(81, 63, 66);")
+        self.del_btn.setStyleSheet("background-color: rgb(205, 183, 169);\n"
+                                   "")
+        self.add_btn.setStyleSheet("background-color: rgb(205, 183, 169);\n"
+                                   "border-color: rgb(198, 186, 190);")
+        self.main_text.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
+                                     "color: rgb(241, 240, 232);\n"
+                                     "background-color: rgb(81, 63, 66);")
+        self.selected_event.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
+                                      "color: rgb(241, 240, 232);\n"
+                                      "background-color: rgb(81, 63, 66);")
+        self.input_text.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
+                                      "color: rgb(241, 240, 232);\n"
+                                      "background-color: rgb(81, 63, 66);")
+        self.soon_event.setStyleSheet("background-color: rgb(81, 63, 66);\n"
+                                      "color: rgb(241, 240, 232);\n"
+                                      "font: 12pt \"TeX Gyre Schola\";")
+        self.calendarWidget.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
+                                      "background-color: rgb(81, 63, 66);")
+        self.done_text.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
+                                     "background-color: rgb(81, 63, 66);\n"
+                                     "color: rgb(226, 214, 206);")
+        self.under_done.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
+                                      "color: rgb(241, 240, 232);\n"
+                                      "background-color: rgb(81, 63, 66);")
+        self.del_btn_2.setStyleSheet("background-color: rgb(205, 183, 169);\n"
+                                     "")
+        self.del_btn_3.setStyleSheet("background-color: rgb(205, 183, 169);\n"
+                                     "")
+        # self.coffee_look.setStyleSheet("background-color: rgb(170, 124, 114);")
+        self.classic_look.setStyleSheet("background-color: rgb(170, 124, 114);")
+        self.dark_look.setStyleSheet("background-color: rgb(170, 124, 114);")
+        # self.eatable_look.setStyleSheet("background-color: rgb(170, 124, 114);")
 
     def f_eatable_look(self):  # функция, меняющая стиль
         self.listWidget.setStyleSheet("font: 12pt \"TeX Gyre Schola\";\n"
@@ -336,8 +343,8 @@ class Doing(QtWidgets.QMainWindow, Ui_MainWindow):
         self.under_done.setStyleSheet("background-color: rgb(252, 203, 190);\n"
                                       "font: 12pt \"TeX Gyre Schola\";")
         self.classic_look.setStyleSheet("background-color: rgb(206, 224, 221);")
-        self.coffee_look.setStyleSheet("background-color: rgb(206, 224, 221);")
-        self.autumn_look.setStyleSheet("background-color: rgb(206, 224, 221);")
+        self.light_look.setStyleSheet("background-color: rgb(206, 224, 221);")
+        self.dark_look.setStyleSheet("background-color: rgb(206, 224, 221);")
         self.eatable_look.setStyleSheet("background-color: rgb(206, 224, 221);")
 
     def ikon(self):  # функция для отображения иконки
@@ -349,7 +356,7 @@ class Doing(QtWidgets.QMainWindow, Ui_MainWindow):
         self.image.setPixmap(self.pixmap)
 
     def main_image(self):  # функция для отображения главной картинки ( в данном случае цветов)
-        self.pixmap = QPixmap('orig.jpg')
+        self.pixmap = QPixmap('orig1.jpg')
         self.image = QLabel(self)
         self.image.move(360, 315)
         self.image.resize(340, 340)

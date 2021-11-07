@@ -81,11 +81,11 @@ class Ui_MainWindow(object):
         self.coffee_look = QtWidgets.QToolButton(self.centralwidget)
         self.coffee_look.setGeometry(QtCore.QRect(10, 630, 161, 24))
         self.coffee_look.setStyleSheet("background-color: rgb(206, 224, 221);\n""")
-        self.coffee_look.setObjectName("coffee_look")
+        self.coffee_look.setObjectName("light_look")
         self.autumn_look = QtWidgets.QToolButton(self.centralwidget)
         self.autumn_look.setGeometry(QtCore.QRect(190, 600, 161, 24))
         self.autumn_look.setStyleSheet("background-color: rgb(206, 224, 221);")
-        self.autumn_look.setObjectName("autumn_look")
+        self.autumn_look.setObjectName("dark_look")
 
         self.eatable_look = QtWidgets.QToolButton(self.centralwidget)
         self.eatable_look.setGeometry(QtCore.QRect(190, 630, 161, 24))
